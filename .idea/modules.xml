@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/django-learning-log.iml" filepath="$PROJECT_DIR$/.idea/django-learning-log.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../django-pizzeria/.idea/django-pizzeria.iml" filepath="$PROJECT_DIR$/../django-pizzeria/.idea/django-pizzeria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../myFirstDjangoSite/.idea/myFirstDjangoSite.iml" filepath="$PROJECT_DIR$/../myFirstDjangoSite/.idea/myFirstDjangoSite.iml" />
+    </modules>
+  </component>
+</project>
