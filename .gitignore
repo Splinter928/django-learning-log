@@ -138,4 +138,4 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-!/learning_log/secret_settings.py
+/learning_log/secret_settings.py
