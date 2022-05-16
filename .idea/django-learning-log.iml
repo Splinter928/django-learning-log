@@ -6,7 +6,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="django-pizzeria" />
     <orderEntry type="module" module-name="myFirstDjangoSite" />
+    <orderEntry type="module" module-name="personal_portfolio" />
   </component>
 </module>

@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/django-learning-log.iml" filepath="$PROJECT_DIR$/.idea/django-learning-log.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../django-pizzeria/.idea/django-pizzeria.iml" filepath="$PROJECT_DIR$/../django-pizzeria/.idea/django-pizzeria.iml" />
       <module fileurl="file://$PROJECT_DIR$/../myFirstDjangoSite/.idea/myFirstDjangoSite.iml" filepath="$PROJECT_DIR$/../myFirstDjangoSite/.idea/myFirstDjangoSite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../personal_portfolio/.idea/personal_portfolio.iml" filepath="$PROJECT_DIR$/../personal_portfolio/.idea/personal_portfolio.iml" />
     </modules>
   </component>
 </project>
