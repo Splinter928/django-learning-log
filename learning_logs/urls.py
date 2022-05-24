@@ -1,4 +1,4 @@
-"""Defining URL-patterns for learning_logs."""
+"""Defining URL-patterns for learning_logs"""
 from django.urls import path
 from . import views
 
