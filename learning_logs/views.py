@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
@@ -9,21 +11,31 @@ def home(request):
     return render(request, 'learning_logs/home.html')
 
 
+@login_required
 def topics(request):
     """Displays topics list"""
-    topics = Topic.objects.order_by('date_added')
+    topics = Topic.objects.filter(owner=request.user).order_by('date_added')
     context = {'topics': topics}
     return render(request, 'learning_logs/topics.html', context)
 
 
+def check_topic_owner(request):
+    # checking that the topic belongs to the current user
+    if topic.owner != request.user:
+        raise Http404
+
+
+@login_required
 def topic(request, topic_id):
     """Displays one topic and all its records"""
     topic = Topic.objects.get(id=topic_id)
+    check_topic_owner(request)
     entries = topic.entry_set.order_by('-date_added')  # '-' for reverse order
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
 
 
+@login_required
 def new_topic(request):
     """Defining new topic"""
     if request.method != 'POST':  # data not send, empty form creation
@@ -31,16 +43,20 @@ def new_topic(request):
     else:
         form = TopicForm(data=request.POST)  # POST data sent, data processing
         if form.is_valid():
-            form.save()
+            new_topic = form.save(commit=False)
+            new_topic.owner = request.user
+            new_topic.save()
             return redirect('learning_logs:topics')
     # output an empty or invalid form
     context = {'form': form}
     return render(request, 'learning_logs/new_topic.html', context)
 
 
+@login_required
 def new_entry(request, topic_id):
     """Defining new entry"""
     topic = Topic.objects.get(id=topic_id)
+    check_topic_owner(request)
     if request.method != 'POST':
         form = EntryForm()
     else:
@@ -55,11 +71,12 @@ def new_entry(request, topic_id):
     return render(request, 'learning_logs/new_entry.html', context)
 
 
+@login_required
 def edit_entry(request, entry_id):
     """Editing existing entry"""
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
-
+    check_topic_owner(request)
     if request.method != 'POST':
         form = EntryForm(instance=entry)  # form is filled in with the data of the current record
     else:
